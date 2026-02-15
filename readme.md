@@ -1,3 +1,4 @@
+![alt text](IMG/nestle.jpg)
 # Nestlé Case Study
 This project aims to build a data pipeline involving the ingestion, processing, and storage of data in a Data Lake utilizing the **Azure** architecture.
 
