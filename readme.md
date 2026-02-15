@@ -1,95 +1,78 @@
-![alt text](IMG/nestle.jpg)
-# Case Nestle
-Este projeto tem como objetivo construir um pipeline de dados, envolvendo a ingestão, processamento e armazenamento de dados em um Data Lake utilizando a arquitetura do Azure.
+# Nestlé Case Study
+This project aims to build a data pipeline involving the ingestion, processing, and storage of data in a Data Lake utilizing the **Azure** architecture.
 
-# Desafio
-Você recebeu 6 bases distintas: Cargos, CEP, Clientes, Funcionários, Nível e PQ.
-Lembre que somos a maior empresa de bens de consumo do mundo e que no dia a dia
-você irá trabalhar com bases muito maiores.
+# The Challenge
+You have been provided with 6 distinct datasets: **Positions (Cargos), Zip Code (CEP), Clients, Employees, Level, and PQ.**
+Remember that we are the largest consumer goods company in the world, and in a real-world scenario, you will work with much larger datasets.
 
-Must have: ETL e Documentação.
+### Must-have:
+* **ETL and Documentation.**
+* **Language Selection:** Choose a language to demonstrate your logic (**Python, PySpark, Scala, or R**).
+* **Technical Requirement:** Utilization of at least 2 functions (**Window, GroupBy, Union**).
+* **Responsibility:** You are responsible for processing and establishing relationships between these bases in the best possible way!
+* **Deliverable:** A presentation or commented code with documentation (or both).
 
-Escolha uma linguagem para demonstrar a lógica (python, pyspark, scala ou R)
+### Nice to have:
+* 5 relevant insights from the presented datasets.
+* Utilization of an extra Library/Framework (e.g., **Pandas**).
+* Logic or handling for **sensitive data (PII)**.
+* **Data visualization**.
 
-Utilização de pelo menos 2 funções (Window, GroupBy, Union)
+---
 
-Lembre-se: Você é o responsável por tratar e fazer os relacionamentos dessas bases da melhor
-maneira possível!
-
-O entregável poderá ser uma apresentação ou os códigos comentados com a documentação (ou
-ambos)
-
-Nice to have:
-
-5 insights relevantes dos datasets apresentados.
-
-Utilização de uma Biblioteca/Framework extra (exemplo Pandas).
-
-Lógica ou tratativa para dados sensíveis.
-
-Data visualization.
-
-# Arquitetura do Pipeline
+# Pipeline Architecture
 
 ![alt text](IMG/pipeline.JPG)
 
-# Tecnologias
+# Technologies
 
-**Ingestão:** Python  
-**Processamento:** PySpark (Databricks)  
-**Armazenamento:** Azure Data Lake Storage Gen 2  
-**Formato de Dados:** CSV, Parquet  
-**Cloud:** Azure  
-**Armazenamento Analitico:** Azure Synapse Analytics  
-**Controle de Versionamento:** BitBucket  
-**Visualização de Dados:** Power BI  
-**Ferramentas:** Git, GitHub, Figma  
+* **Ingestion:** Python  
+* **Processing:** PySpark (Databricks)  
+* **Storage:** Azure Data Lake Storage Gen 2  
+* **Data Format:** CSV, Parquet  
+* **Cloud:** Azure  
+* **Analytical Storage:** Azure Synapse Analytics  
+* **Version Control:** BitBucket  
+* **Data Visualization:** Power BI  
+* **Tools:** Git, GitHub, Figma  
 
-# Cenário
+---
 
-**Dados**  
-Os dados para este projeto são extraídos de seis arquivos CSV contendo informações sobre funcionários de uma empresa fictícia. 
+# Scenario
 
-**Visão Geral do Pipeline de Dados**  
-O pipeline inicia com a ingestão dos dados para o **Azure Data Lake Storage (ADLS) Gen 2** utilizando Python. Dentro do **Databricks**, os arquivos CSV são consumidos da camada **raw**. Após essa etapa, os dados passam por validações e transformações e são movidos para a camada **processed**. Com os dados processados, eles são consumidos pelo **Azure Synapse Analytics** para análises em larga escala. Por fim, são criados **dashboards interativos no Power BI** para visualização dos resultados e tomada de decisões. Além disso, a infraestrutura necessária para a execução do pipeline é provisionada e gerenciada utilizando **Terraform**, garantindo a criação e configuração automatizada de recursos no Azure.
+**Data** The data for this project is extracted from six CSV files containing information about employees of a fictional company. 
 
-Os passos do projeto são:
+**Data Pipeline Overview** The pipeline begins with the ingestion of data into **Azure Data Lake Storage (ADLS) Gen 2** using Python. Inside **Databricks**, the CSV files are consumed from the **Raw** layer. After this stage, the data undergoes validations and transformations and is moved to the **Processed** layer. Once processed, the data is consumed by **Azure Synapse Analytics** for large-scale analysis. Finally, **interactive dashboards in Power BI** are created for results visualization and decision-making. Additionally, the infrastructure required for the pipeline execution is provisioned and managed using **Terraform**, ensuring automated creation and configuration of Azure resources.
 
-1. **Ingestão de Dados:**  
-    A primeira etapa do pipeline é a ingestão dos dados para o **Azure Data Lake Storage (ADLS) Gen 2** utilizando **Python**. Os arquivos CSV são enviados para o Data Lake para processamento posterior.
+### Project Steps:
 
-    ---
+1.  **Data Ingestion:** The first stage of the pipeline is data ingestion into **Azure Data Lake Storage (ADLS) Gen 2** using **Python**. The CSV files are sent to the Data Lake for further processing.  
+    
     ![alt text](IMG/upload_python.JPG)
-2. **Leitura da Camada Row:**  
-    Antes de começar fazer as transformações, os dados são lidos em formato CSV da camada raw.
 
-    ---
+2.  **Raw Layer Reading:** Before starting the transformations, the data is read in CSV format from the raw layer.  
+    
     ![alt text](IMG/adls.JPG)
-3. **Tratamento de Dados (Validações e Transformações):**  
-    Os dados passam por um processo de tratamento, que inclui validações e transformações necessárias, como limpeza de dados e ajustes conforme os requisitos de negócios.
+
+3.  **Data Treatment (Validations and Transformations):** The data undergoes a treatment process, which includes necessary validations and transformations, such as data cleaning and adjustments according to business requirements.  
     
-    ---
     ![alt text](IMG/databricks.JPG)
-4. **Armazenamento na Camada Processed:**  
-    Após o tratamento, os dados processados são movidos para a **camada Processed**, onde ficam armazenados com qualidade e prontos para análises mais aprofundadas.
+
+4.  **Storage in the Processed Layer:** After treatment, the processed data is moved to the **Processed layer**, where it is stored with high quality and ready for deeper analysis.  
     
-    ---
     ![alt text](IMG/processed.JPG)
-5. **Consumo pelo Azure Synapse Analytics:**  
-    Os dados são consumidos pelo **Azure Synapse Analytics**, onde são criadas tabelas externas que se conectam à camada processed.
+
+5.  **Consumption by Azure Synapse Analytics:** The data is consumed by **Azure Synapse Analytics**, where external tables are created that connect to the processed layer.  
     
-    ---
     ![alt text](IMG/image.png)
-6. **Geração de Insights:**
-	Com os dados já limpos e ajustados, são gerados insights para analise e exploração dos dados.
 
-    ---
+6.  **Insight Generation:** With the data already cleaned and adjusted, insights are generated for data analysis and exploration.  
+    
     ![alt text](IMG/query.JPG)
-7. **Criação de Dashboards no Power BI:**  
-    Por fim, **dashboards interativos** são criados no **Power BI**, oferecendo uma interface visual para apresentação dos dados no pipeline.
 
-    ---
-    ![alt text](IMG/intro.jpg)
+7.  **Power BI Dashboard Creation:** Finally, **interactive dashboards** are created in **Power BI**, offering a visual interface for presenting the data in the pipeline.  
+    
+    ![alt text](IMG/intro.jpg)  
     ![alt text](IMG/dashboard.JPG)
-8. **Infraestrutura como Código (Terraform)**:  
-	A infraestrutura necessária para suportar o pipeline de dados é provisionada utilizando **Terraform**, garantindo consistência, automação e facilidade de replicação do ambiente. Isso inclui a configuração do **Azure Data Lake Storage (ADLS) Gen 2**, **Databricks**, **Synapse Analytics**, e outras dependências utilizadas no projeto.
+
+8.  **Infrastructure as Code (Terraform):** The infrastructure required to support the data pipeline is provisioned using **Terraform**, ensuring consistency, automation, and ease of environment replication. This includes the configuration of **Azure Data Lake Storage (ADLS) Gen 2**, **Databricks**, **Synapse Analytics**, and other dependencies used in the project.
